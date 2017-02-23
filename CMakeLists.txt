@@ -22,7 +22,13 @@ catkin_package(
     PC_LIBCONFIG
 )
 
-include_directories("${PROJECT_SOURCE_DIR}/include")
+# include_directories("${PROJECT_SOURCE_DIR}/include")
+include_directories(include include/mars)
+include_directories(
+  ${PC_FFTW3_INCLUDE_DIRS}
+  ${PC_ALSA_INCLUDE_DIRS}
+  ${PC_LIBCONFIG_INCLUDE_DIRS}
+)
 
 file(GLOB_RECURSE SRC "*.c")
 
