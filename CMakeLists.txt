@@ -1,15 +1,26 @@
-cmake_minimum_required(VERSION 2.8.12)  # Ships with Ubuntu 14.04 (Trusty)
+cmake_minimum_required(VERSION 2.8.3)
 project(mars)
 
 set(CMAKE_BUILD_TYPE "Release")
+
+find_package(catkin REQUIRED COMPONENTS
+  cmake_modules
+)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(PC_FFTW3 REQUIRED fftw3f)
 pkg_check_modules(PC_ALSA REQUIRED alsa)
 pkg_check_modules(PC_LIBCONFIG REQUIRED libconfig)
 
-# Install catkin package.xml
-install(FILES package.xml DESTINATION share/mars)
+catkin_package(
+  INCLUDE_DIRS include
+  LIBRARIES mars
+  CATKIN_DEPENDS
+  DEPENDS
+    PC_FFTW3
+    PC_ALSA
+    PC_LIBCONFIG
+)
 
 include_directories("${PROJECT_SOURCE_DIR}/include")
 
@@ -31,4 +42,17 @@ add_executable(demo
 
 target_link_libraries(demo
   mars
+)
+
+## Mark executables and/or libraries for installation
+install(TARGETS mars
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+## Mark cpp header files for installation
+install(DIRECTORY include/
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.h"
 )
