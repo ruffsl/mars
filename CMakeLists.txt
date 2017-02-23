@@ -9,12 +9,15 @@ pkg_check_modules(PC_FFTW3 REQUIRED fftw3f)
 pkg_check_modules(PC_ALSA REQUIRED alsa)
 pkg_check_modules(PC_LIBCONFIG REQUIRED libconfig)
 
+# Install catkin package.xml
+install(FILES package.xml DESTINATION share/mars)
+
 include_directories("${PROJECT_SOURCE_DIR}/include")
 
 set(CMAKE_BUILD_TYPE "Release")
 
-set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin")
-set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/lib")
+# set(EXECUTABLE_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/bin")
+# set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/lib")
 
 set(SRC
 
@@ -95,10 +98,10 @@ set(SRC
     src/system/xcorr2xcorr.c
 
     src/utils/fft.c
-    src/utils/gaussian.c   
+    src/utils/gaussian.c
     src/utils/matrix.c
     src/utils/pcm.c
-    src/utils/random.c    
+    src/utils/random.c
 
 )
 
