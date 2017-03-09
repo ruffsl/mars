@@ -8,7 +8,7 @@
 
     src_raw_file_cfg * parameters2configs_src_raw_file(const parameters * params);
 
-    src_buf_cfg * parameters2configs_src_buf(const parameters * params);
+    src_buf_cfg * parameters2configs_src_buf(const parameters * params, int* buf);
 
     src_raw_soundcard_cfg * parameters2configs_src_raw_soundcard(const parameters * params);
 

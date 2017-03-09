@@ -8,7 +8,7 @@
         cfgs = (configs *) malloc(sizeof(configs));
 
         cfgs->src_raw_file = (src_raw_file_cfg *) NULL;
-        cfgs->src_buf = (src_raw_file_cfg *) NULL;
+        cfgs->src_buf = (src_buf_cfg *) NULL;
         cfgs->src_raw_soundcard = (src_raw_soundcard_cfg *) NULL;
         cfgs->src_wav_file = (src_wav_file_cfg *) NULL;
         cfgs->msg_hops_raw_in = (msg_hops_cfg *) NULL;

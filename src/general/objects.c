@@ -34,10 +34,6 @@
             src_raw_file_destroy(objs->src_raw_file);
         }
 
-        if (objs->src_buf != NULL) {
-            src_buf_destroy(objs->src_raw_file);
-        }
-
         if (objs->msg_hops_raw_in != NULL) {
             msg_hops_destroy(objs->msg_hops_raw_in);
         }
