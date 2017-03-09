@@ -17,7 +17,7 @@
         unsigned int nBits;
         int * buf; // for now, assume the input is ints (i.e. 32 bit)
 
-    } src_raw_file_obj;
+    } src_buf_obj;
 
     typedef struct src_buf_cfg {
 
