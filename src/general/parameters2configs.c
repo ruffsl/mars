@@ -38,7 +38,7 @@
 
     }
 
-    src_buf_cfg * parameters2configs_src_buf(const parameters * params, int* buf) {
+    src_buf_cfg * parameters2configs_src_buf(const parameters * params) {
 
         src_buf_cfg * cfg;
 
@@ -48,7 +48,7 @@
         cfg->nMics = params->general->mics->nMics;
         cfg->nBits = params->raw->nBitsIn;
 
-        cfg->buf = buf;
+        // cfg->buf = buf;
 
         return cfg;
 
