@@ -1,4 +1,4 @@
-    
+
 #ifndef __MARS_GENERAL_PARAMETERS
 #define __MARS_GENERAL_PARAMETERS
 
@@ -40,7 +40,7 @@
         unsigned int R;
         char * shape;
 
-    } parameters_ssl_obj;    
+    } parameters_ssl_obj;
 
     typedef struct parameters_sst_obj {
 
@@ -59,7 +59,7 @@
         float * inactive_mu;
         float * inactive_sigma;
         float Pfalse;
-        float Pnew;    
+        float Pnew;
         float Ptrack;
         float theta_new;
         unsigned int N_prob;
@@ -76,16 +76,16 @@
         float ac_alpha;
         float ac_beta;
         float ac_ratio;
-        float Nmin;            
+        float Nmin;
 
-    } parameters_sst_obj;       
+    } parameters_sst_obj;
 
     typedef struct parameters {
 
         parameters_general_obj * general;
         parameters_raw_obj * raw;
         parameters_ssl_obj * ssl;
-        parameters_sst_obj * sst;    
+        parameters_sst_obj * sst;
 
     } parameters;
 

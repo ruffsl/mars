@@ -1,4 +1,4 @@
-    
+
     #include "objects.h"
 
     objects * objects_construct_null(void) {
@@ -8,6 +8,7 @@
         objs = (objects *) malloc(sizeof(objects));
 
         objs->src_raw_file = (src_raw_file_obj *) NULL;
+        objs->src_buf = (src_buf_obj *) NULL;
         objs->msg_hops_raw_in = (msg_hops_obj *) NULL;
         objs->mod_resample_raw_in = (mod_resample_obj *) NULL;
         objs->msg_hops_raw = (msg_hops_obj *) NULL;
@@ -31,6 +32,10 @@
 
         if (objs->src_raw_file != NULL) {
             src_raw_file_destroy(objs->src_raw_file);
+        }
+
+        if (objs->src_buf != NULL) {
+            src_buf_destroy(objs->src_raw_file);
         }
 
         if (objs->msg_hops_raw_in != NULL) {
@@ -76,11 +81,11 @@
         if (objs->mod_sst != NULL) {
             mod_sst_destroy(objs->mod_sst);
         }
-        
+
         if (objs->msg_tracks != NULL) {
             msg_tracks_destroy(objs->msg_tracks);
         }
-        
+
         if (objs->snk_tracks_file != NULL) {
             snk_tracks_file_destroy(objs->snk_tracks_file);
         }

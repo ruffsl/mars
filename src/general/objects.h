@@ -4,8 +4,10 @@
     #include <stdlib.h>
 
     #include "../source/src_raw_file.h"
+    #include "../source/src_buf.h"
     #include "../source/src_raw_soundcard.h"
     #include "../source/src_wav_file.h"
+
     #include "../message/msg_hops.h"
     #include "../module/mod_resample.h"
     #include "../sink/snk_raw_file.h"
@@ -17,10 +19,11 @@
     #include "../module/mod_sst.h"
     #include "../message/msg_tracks.h"
     #include "../sink/snk_tracks_file.h"
-    
+
     typedef struct objects {
 
         src_raw_file_obj * src_raw_file;
+        src_buf_obj * src_buf;
         src_raw_soundcard_obj * src_raw_soundcard;
         src_wav_file_obj * src_wav_file;
         msg_hops_obj * msg_hops_raw_in;

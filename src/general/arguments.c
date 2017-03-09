@@ -12,6 +12,7 @@
         args->input_raw_soundcard = (char *) NULL;
         args->input_raw_socket = (char *) NULL;
         args->input_wav_file = (char *) NULL;
+        args->input_buf = (char *) NULL;
         args->output_raw_file = (char *) NULL;
         args->output_raw_soundcard = (char *) NULL;
         args->output_raw_socket = (char *) NULL;
@@ -29,17 +30,21 @@
     void arguments_destroy(arguments * args) {
 
         if (args->config_file != NULL) {
-            free((void *) args->config_file);    
+            free((void *) args->config_file);
         }
 
         if (args->input_raw_file != NULL) {
             free((void *) args->input_raw_file);
         }
-         
+
+        if (args->input_buf != NULL) {
+            free((void *) args->input_buf);
+        }
+
         if (args->input_raw_soundcard != NULL) {
             free((void *) args->input_raw_soundcard);
         }
-         
+
         if (args->input_raw_socket != NULL) {
             free((void *) args->input_raw_socket);
         }
@@ -58,7 +63,7 @@
 
         if (args->output_raw_socket != NULL) {
             free((void *) args->output_raw_socket);
-        } 
+        }
 
         if (args->output_pot_file_bin != NULL) {
             free((void *) args->output_pot_file_bin);
@@ -74,7 +79,7 @@
 
         if (args->output_track_file_xml != NULL) {
             free((void *) args->output_track_file_xml);
-        }        
+        }
 
         free((void *) args);
 
@@ -84,6 +89,7 @@
 
         printf("config_file: %s\n",args->config_file);
         printf("input_raw_file: %s\n",args->input_raw_file);
+        printf("input_buf: %s\n",args->input_buf);
         printf("input_raw_soundcard: %s\n",args->input_raw_soundcard);
         printf("input_raw_socket: %s\n",args->input_raw_socket);
         printf("input_wav_file: %s\n",args->input_wav_file);

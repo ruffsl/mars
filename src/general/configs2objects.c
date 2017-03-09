@@ -14,6 +14,13 @@
 
         }
 
+        if (args->input_buf != NULL) {
+
+
+            objs->src_buf = src_buf_construct(cfgs->src_buf);
+
+        }
+
         if (args->input_raw_soundcard != NULL) {
 
             cfgs->src_raw_soundcard->cardName = (char *) malloc(sizeof(char) * (strlen(args->input_raw_soundcard) + 1));
@@ -41,7 +48,7 @@
 
         // Hops
 
-        objs->msg_hops_raw_in = msg_hops_construct(cfgs->msg_hops_raw_in); 
+        objs->msg_hops_raw_in = msg_hops_construct(cfgs->msg_hops_raw_in);
         objs->mod_resample_raw_in = mod_resample_construct(cfgs->mod_resample_raw_in);
         objs->msg_hops_raw = msg_hops_construct(cfgs->msg_hops_raw);
 
@@ -63,15 +70,15 @@
 
             printf("Not implemented yet.\n");
             exit(EXIT_FAILURE);
-            
-        }        
+
+        }
 
         if (args->output_raw_socket != NULL) {
 
             printf("Not implemented yet.\n");
             exit(EXIT_FAILURE);
-            
-        }  
+
+        }
 
         // SSL
 
@@ -130,7 +137,7 @@
 
                 objs->snk_tracks_file = snk_tracks_file_construct(cfgs->snk_tracks_file);
 
-            }           
+            }
 
             if (args->output_track_file_xml != NULL) {
 
@@ -141,7 +148,7 @@
 
                 objs->snk_tracks_file = snk_tracks_file_construct(cfgs->snk_tracks_file);
 
-            }                   
+            }
 
         }
 

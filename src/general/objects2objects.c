@@ -10,10 +10,18 @@
 
         if (objs->src_raw_file != NULL) {
 
-            rtnValue = src_raw_file_process(objs->src_raw_file, 
+            rtnValue = src_raw_file_process(objs->src_raw_file,
                                             objs->msg_hops_raw_in);
 
         }
+
+        if (objs->src_buf != NULL) {
+
+            rtnValue = src_buf_process(objs->src_buf, 
+                                            objs->msg_hops_raw_in);
+
+        }
+
 
         if (objs->src_raw_soundcard != NULL) {
 
@@ -24,7 +32,7 @@
 
         if (objs->src_wav_file != NULL) {
 
-            rtnValue = src_wav_file_process(objs->src_wav_file, 
+            rtnValue = src_wav_file_process(objs->src_wav_file,
                                             objs->msg_hops_raw_in);
 
         }
@@ -37,8 +45,8 @@
 
         start = clock();
 
-        mod_resample_process(objs->mod_resample_raw_in, 
-                             objs->msg_hops_raw_in, 
+        mod_resample_process(objs->mod_resample_raw_in,
+                             objs->msg_hops_raw_in,
                              objs->msg_hops_raw);
 
         end = clock();
@@ -53,19 +61,19 @@
                                  objs->msg_hops_raw,
                                  objs->msg_hops_raw_out);
 
-            snk_raw_file_process(objs->snk_raw_file, 
+            snk_raw_file_process(objs->snk_raw_file,
                                  objs->msg_hops_raw_out);
 
         }
 
-        // Perform processing       
+        // Perform processing
 
         if (objs->mod_ssl != NULL) {
 
             start = clock();
-            
-            mod_stft_process(objs->mod_stft, 
-                             objs->msg_hops_raw, 
+
+            mod_stft_process(objs->mod_stft,
+                             objs->msg_hops_raw,
                              objs->msg_spectra);
 
             end = clock();
@@ -74,23 +82,23 @@
 
             start = clock();
 
-            mod_ssl_process(objs->mod_ssl, 
-                            objs->msg_spectra, 
-                            objs->msg_pots);    
+            mod_ssl_process(objs->mod_ssl,
+                            objs->msg_spectra,
+                            objs->msg_pots);
 
             end = clock();
 
             profiler->ssl += ((float) (end-start)) / ((float) CLOCKS_PER_SEC);
 
         }
-        
+
         if (objs->mod_sst != NULL) {
-            
+
             start = clock();
 
-            mod_sst_process(objs->mod_sst, 
+            mod_sst_process(objs->mod_sst,
                             objs->msg_pots,
-                            objs->msg_tracks);    
+                            objs->msg_tracks);
 
             end = clock();
 
@@ -105,14 +113,14 @@
 
         if (objs->snk_pots_file != NULL) {
 
-            snk_pots_file_process(objs->snk_pots_file, 
+            snk_pots_file_process(objs->snk_pots_file,
                                   objs->msg_pots);
 
         }
 
         if (objs->snk_tracks_file != NULL) {
 
-            snk_tracks_file_process(objs->snk_tracks_file, 
+            snk_tracks_file_process(objs->snk_tracks_file,
                                     objs->msg_tracks);
 
         }

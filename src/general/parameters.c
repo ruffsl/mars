@@ -21,7 +21,7 @@
         if (params->general != NULL) {
 
             mics_destroy(params->general->mics);
-            
+
             free((void *) params->general);
 
         }
@@ -37,7 +37,7 @@
             free((void *) params->ssl->levels);
             free((void *) params->ssl->deltasMax);
             free((void *) params->ssl->shape);
-            
+
             free((void *) params->ssl);
 
         }
@@ -75,12 +75,12 @@
         printf(" - mics:\n");
 
         for (iMic = 0; iMic < params->general->mics->nMics; iMic++) {
-            
+
             printf("    - (%02u): (%+1.3f, %+1.3f, %+1.3f)\n",
                    iMic,
                    params->general->mics->array[iMic * 3 + 0],
                    params->general->mics->array[iMic * 3 + 1],
-                   params->general->mics->array[iMic * 3 + 2]);    
+                   params->general->mics->array[iMic * 3 + 2]);
 
         }
 
@@ -133,7 +133,7 @@
         printf(" - sigmaR_prob: %1.3f\n",params->sst->sigmaR_prob);
         printf(" - sigmaR_active: %1.3f\n",params->sst->sigmaR_active);
         printf(" - epsilon: %1.3e\n",params->sst->epsilon);
-        
+
         printf(" - active:\n");
         for (iGaussian = 0; iGaussian < params->sst->active_G; iGaussian++) {
 
@@ -153,8 +153,8 @@
                    params->sst->inactive_mu[iGaussian],
                    params->sst->inactive_sigma[iGaussian]);
 
-        }        
-        
+        }
+
         printf(" - Pfalse: %1.3f\n",params->sst->Pfalse);
         printf(" - Pnew: %1.3f\n",params->sst->Pnew);
         printf(" - Ptrack: %1.3f\n",params->sst->Ptrack);

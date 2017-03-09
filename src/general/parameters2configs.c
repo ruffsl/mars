@@ -4,6 +4,7 @@
     void parameters2configs(configs * cfgs, const parameters * params) {
 
         cfgs->src_raw_file = parameters2configs_src_raw_file(params);
+        cfgs->src_buf = parameters2configs_src_buf(params);
         cfgs->src_raw_soundcard = parameters2configs_src_raw_soundcard(params);
         cfgs->src_wav_file = parameters2configs_src_wav_file(params);
         cfgs->msg_hops_raw_in = parameters2configs_msg_hops_raw_in(params);
@@ -32,6 +33,22 @@
         cfg->hopSize = params->raw->hopSizeIn;
         cfg->nMics = params->general->mics->nMics;
         cfg->nBits = params->raw->nBitsIn;
+
+        return cfg;
+
+    }
+
+    src_buf_cfg * parameters2configs_src_buf(const parameters * params, int* buf) {
+
+        src_buf_cfg * cfg;
+
+        cfg = src_buf_cfg_construct();
+
+        cfg->hopSize = params->raw->hopSizeIn;
+        cfg->nMics = params->general->mics->nMics;
+        cfg->nBits = params->raw->nBitsIn;
+
+        cfg->buf = buf;
 
         return cfg;
 
@@ -102,7 +119,7 @@
         cfg->hopSize = params->general->hopSize;
         cfg->nMics = params->general->mics->nMics;
 
-        return cfg;        
+        return cfg;
 
     }
 
@@ -130,8 +147,8 @@
         cfg->hopSizeOut = params->raw->hopSizeOut;
 
         return cfg;
-        
-    }    
+
+    }
 
     snk_raw_file_cfg * parameters2configs_snk_raw_file(const parameters * params) {
 
@@ -281,8 +298,8 @@
                                                                                       params->sst->inactive_mu[iGaussian],
                                                                                       params->sst->inactive_sigma[iGaussian]);
 
-        }        
-        
+        }
+
         cfg->Pfalse = params->sst->Pfalse;
         cfg->Pnew = params->sst->Pnew;
         cfg->Ptrack = params->sst->Ptrack;

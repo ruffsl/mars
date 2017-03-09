@@ -2,11 +2,13 @@
 #define __MARS_GENERAL_PARAMETERS2CONFIGS
 
     #include "parameters.h"
-    #include "configs.h"   
+    #include "configs.h"
 
     void parameters2configs(configs * cfgs, const parameters * params);
 
     src_raw_file_cfg * parameters2configs_src_raw_file(const parameters * params);
+
+    src_buf_cfg * parameters2configs_src_buf(const parameters * params);
 
     src_raw_soundcard_cfg * parameters2configs_src_raw_soundcard(const parameters * params);
 

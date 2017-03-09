@@ -11,6 +11,7 @@
         char * config_file;
 
         char * input_raw_file;
+        char * input_buf;
         char * input_raw_soundcard;
         char * input_raw_socket;
         char * input_wav_file;
@@ -19,7 +20,7 @@
         char * output_raw_socket;
 
         char * output_pot_file_bin;
-        char * output_pot_file_xml;        
+        char * output_pot_file_xml;
         char * output_track_file_bin;
         char * output_track_file_xml;
 
