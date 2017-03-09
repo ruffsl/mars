@@ -42,6 +42,7 @@
         signed int sampleInt;
         float sample;
         int rtnValue;
+        int offset;
         int tmp;
 
         rtnValue = 0;
@@ -61,7 +62,7 @@
                     // break;
 
                     case 32:
-                        int offset = iSample * obj->nMics + iMic;
+                        offset = iSample * obj->nMics + iMic;
                         sampleInt = obj->buf[offset]; // fread(&sampleInt, sizeof(signed int), 1, obj->fp);
                         sample = pcm_signed32bits2normalized(sampleInt);
 
