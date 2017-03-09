@@ -61,8 +61,8 @@
                     // break;
 
                     case 32:
-                        size_t offset = iSample * obj->nMics + iMic;
-                        sampleInt = buf[offset]; // fread(&sampleInt, sizeof(signed int), 1, obj->fp);
+                        int offset = iSample * obj->nMics + iMic;
+                        sampleInt = obj->buf[offset]; // fread(&sampleInt, sizeof(signed int), 1, obj->fp);
                         sample = pcm_signed32bits2normalized(sampleInt);
 
                     break;
