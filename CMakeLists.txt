@@ -108,7 +108,7 @@ pkg_check_modules(PC_LIBCONFIG REQUIRED libconfig)
 #  DEPENDS system_lib
 # )
 catkin_package(
-  INCLUDE_DIRS include
+  INCLUDE_DIRS include ..
   LIBRARIES mars
   CATKIN_DEPENDS
   DEPENDS
@@ -136,8 +136,10 @@ include_directories(
 #   src/${PROJECT_NAME}/mars.cpp
 # )
 file(GLOB_RECURSE SRC "*.c")
+file(GLOB_RECURSE SRCH "*.h")
 add_library(mars SHARED
   ${SRC}
+  ${SRCH}
 )
 
 ## Add cmake target dependencies of the library
@@ -199,12 +201,12 @@ install(TARGETS mars demo
 #   FILES_MATCHING PATTERN "*.h"
 #   PATTERN ".svn" EXCLUDE
 # )
-install(DIRECTORY include/
-  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}/include/mars
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}/include/${PROJECT_NAME}/
   FILES_MATCHING PATTERN "*.h"
 )
 install(DIRECTORY src/
-  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}/src
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}/src
   FILES_MATCHING PATTERN "*.h"
 )
 
